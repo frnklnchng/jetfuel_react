@@ -3,14 +3,16 @@ import logo from './logo.svg';
 import './App.css';
 
 import Nav from './components/nav';
+import CampaignFeed from './components/campaign_feed';
 
 function App() {
   return (
     <div className="App">
       <Nav/>
-      <header className="App-header">
+      <CampaignFeed/>
+      {/* <header className="App-header"> */}
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        {/* <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
@@ -21,7 +23,7 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
     </div>
   );
 }

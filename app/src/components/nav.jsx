@@ -5,9 +5,9 @@ class Nav extends React.Component {
   render() {
     return (
       <nav className="nav">
-        <div className="nav-hamburger">X</div>
+        <div className="nav-hamburger">HAMBURGER</div>
         <a href="https://www.plugco.in/">
-          <img className="nav-icon" src={favicon}/>
+          <img className="nav-icon" src={favicon} alt="Plug"/>
         </a>
       </nav>
     );
