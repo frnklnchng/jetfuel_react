@@ -2,6 +2,7 @@ import React from 'react';
 import retry from './retry.png';
 import logo from '../logo.svg';
 import Campaign from './campaign';
+import PullToRefresh from '../index.umd';
 
 class CampaignFeed extends React.Component {
   constructor(props) {
@@ -11,13 +12,33 @@ class CampaignFeed extends React.Component {
       campaigns: [],
       failed: null
     };
+
+    this.fetchCampaigns = this.fetchCampaigns.bind(this);
+  }
+
+  fetchCampaigns() {
+    fetch('https://www.plugco.in/public/take_home_sample_feed')
+      .then((response) => response.json())
+      .then((data) => this.setState({ campaigns: data.campaigns }))
+      .catch((error) => this.setState({ failed: error }));
   }
 
   componentDidMount() {
-    fetch('https://www.plugco.in/public/take_home_sample_feed')
-      .then((response) => response.json())
-      .then((data) => this.setState({campaigns: data.campaigns}))
-      .catch((error) => this.setState({failed: error}));
+    const that = this;
+    
+    PullToRefresh.init({
+      mainElement: 'body',
+      onRefresh() {
+        that.setState({ campaigns: [] });
+        that.fetchCampaigns();
+      }
+    });
+
+    this.fetchCampaigns();
+  }
+
+  componentWillUnmount() {
+    PullToRefresh.destroyAll();
   }
 
   render() {
