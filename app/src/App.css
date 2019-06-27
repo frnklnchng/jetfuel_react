@@ -4,8 +4,13 @@
   overflow: auto;
 } */
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 b {
-font-weight: bold;
+  font-weight: bold;
 }
 
 ul {
@@ -49,6 +54,7 @@ ul {
 
 .nav-hamburger {
   font-size: 42px;
+  display: block;
   margin-top: 2px;
   margin-left: 20px;
 }
