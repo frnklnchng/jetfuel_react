@@ -2,7 +2,7 @@ import React from 'react';
 import retry from './retry.png';
 import logo from '../logo.svg';
 import Campaign from './campaign';
-import PullToRefresh from '../index.umd';
+import PullToRefresh from '../ptr';
 
 class CampaignFeed extends React.Component {
   constructor(props) {
