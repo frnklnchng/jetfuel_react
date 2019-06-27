@@ -9,10 +9,18 @@ class CampaignMedia extends React.Component {
       );
     });
 
+    // let mediaPlaceholder = (n) => {
+    //   if (n > 0) {
+    //     return <div className="media-placeholder"></div>;
+    //   }
+    // };
+
     return (
       <ul className="campaign-media">
         {mediaItems}
+        {/* {mediaPlaceholder(mediaItems.length)} */}
         <div className="media-placeholder"></div>
+        
       </ul>
     );
   }

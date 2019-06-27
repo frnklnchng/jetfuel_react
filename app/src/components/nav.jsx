@@ -5,7 +5,7 @@ class Nav extends React.Component {
   render() {
     return (
       <div className="nav">
-        {/* <div className="nav-hamburger">HAMBURGER</div> */}
+        <div className="nav-hamburger">=</div>
         <a className="nav-icon" href="https://www.plugco.in/">
           <img className="nav-icon" src={favicon} alt="Plug"/>
         </a>

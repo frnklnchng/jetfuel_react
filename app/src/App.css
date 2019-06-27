@@ -47,6 +47,12 @@ ul {
   height: 50px;
 }
 
+.nav-hamburger {
+  font-size: 42px;
+  margin-top: 2px;
+  margin-left: 20px;
+}
+
 .nav-icon {
   height: 38px;
   margin: 0;
@@ -55,6 +61,35 @@ ul {
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
+}
+
+.retry {
+  font-family: Helvetica;
+  font-size: 18px;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 1.5em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.retry-button {
+  height: 100px;
+  width: 100px;
+  margin-top: 20px;
+  animation: rotation 5s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }
 
 .campaign-feed {
@@ -80,15 +115,15 @@ ul {
 
 .campaign-icon {
   float: left;
-  height: 75%;
+  height: 65%;
   margin-left: 20px;
 }
 
 .campaign-details {
   float: left;
   margin-left: 15px;
-  font-size: 20px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-family: Helvetica;
 }
 
 .campaign-name {
@@ -106,22 +141,47 @@ ul {
 }
 
 .media-placeholder {
-  border-right: 20px;
+  min-width: 20px;
 }
 
-.campaign-media-items {
-  height: 250px;
+.campaign-media-item {
+  height: 246px;
   margin-left: 19px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.media-item-cover {
-
+.cover-container {
+  margin-bottom: 5px;
+  position: relative;
+  z-index: -1;
 }
 
-.media-item-play {
+.media-item-cover {
+  /* -webkit-filter: grayscale(40%);
+  -moz-filter: grayscale(40%);
+  -o-filter: grayscale(40%);
+  -ms-filter: grayscale(40%);
+  filter: grayscale(40%);  */
+}
 
+.cover-overlay {
+  border-radius: 10px;
+  position: absolute;
+  width: 100px;
+  height: 200px;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.cover-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  z-index: 2;
 }
 
 .media-item-options {
@@ -130,10 +190,14 @@ ul {
 
 .copy {
   width: 50px;
+  border-color: 100px solid black;
+  border-top-left-radius: 5px;
 }
 
 .download {
   width: 50px;
+  border-color: 2px solid black;
+  border-top-right-radius: 5px;
 }
 
 div.clear {

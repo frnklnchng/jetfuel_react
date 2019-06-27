@@ -1,5 +1,6 @@
 import React from 'react';
 import copy from './copy.png';
+import play from './play.png';
 import download from './download.png';
 
 
@@ -40,30 +41,27 @@ class CampaignMediaItem extends React.Component {
     const resize = "https://res.cloudinary.com/zzyzx/image/fetch/w_100,h_200,c_fill,g_face,r_10,f_auto/";
 
     const coverMedia = () => {
-      if (media_type === "photo") {
-        return <img src={resize + cover_photo_url} alt="failed to load"></img>
+      if (media_type === "video") {
+        return (
+          <img className="cover-play" src={play} alt="Play"></img>
+        );
       }
-
-      return (
-        <div>
-          <img className="media-item-cover" src={resize + escape(cover_photo_url)} alt="failed to load"></img>
-          <img className="media-item-play" src={null} alt="play"></img>
-        </div>
-      );
     };
 
     return (
-      <li className="campaign-media-items">
-        <div>
+      <li className="campaign-media-item">
+        <div className="cover-container">
           {coverMedia()}
-          <div className="media-item-options">
-            <button className="copy" onClick={() => {this.copyToClipboard(tracking_link)}}>
-              <img className="copy" src={copy} alt="Copy"/>
-            </button>
-            <a className="download" href={download_url}>
-              <img className="download" src={download} alt="Download"/>
-            </a>
-          </div>
+          <div className="cover-overlay"></div>
+          <img className="media-item-cover" src={resize + escape(cover_photo_url)} alt="failed to load"></img>
+        </div>
+        <div className="media-item-options">
+          <button className="copy" onClick={() => {this.copyToClipboard(tracking_link)}}>
+            <img className="copy" src={copy} alt="Copy"/>
+          </button>
+          <a className="download" href={download_url} download>
+            <img className="download" src={download} alt="Download"/>
+          </a>
         </div>
       </li>
     );
