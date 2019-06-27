@@ -1,4 +1,7 @@
 import React from 'react';
+import copy from './copy.png';
+import download from './download.png';
+
 
 class CampaignMediaItem extends React.Component {
   constructor(props) {
@@ -34,7 +37,7 @@ class CampaignMediaItem extends React.Component {
 
   render() {
     const {cover_photo_url, media_type, tracking_link, download_url} = this.props.media;
-    const resize = "https://res.cloudinary.com/zzyzx/image/fetch/w_200,h_400,c_fill,g_face,r_10,f_auto/";
+    const resize = "https://res.cloudinary.com/zzyzx/image/fetch/w_100,h_200,c_fill,g_face,r_10,f_auto/";
 
     const coverMedia = () => {
       if (media_type === "photo") {
@@ -43,22 +46,24 @@ class CampaignMediaItem extends React.Component {
 
       return (
         <div>
-          <img src={resize + escape(cover_photo_url)} alt="failed to load"></img>
-          <img src={null} alt="play"></img>
+          <img className="media-item-cover" src={resize + escape(cover_photo_url)} alt="failed to load"></img>
+          <img className="media-item-play" src={null} alt="play"></img>
         </div>
       );
     };
 
     return (
-      <li>
+      <li className="campaign-media-items">
         <div>
           {coverMedia()}
-          <button onClick={() => {this.copyToClipboard(tracking_link)}}>
-            <img className="" src={null} alt="Copy"/>
-          </button>
-          <a href={download_url}>
-            <img className="" src={null} alt="Download"/>
-          </a>
+          <div className="media-item-options">
+            <button className="copy" onClick={() => {this.copyToClipboard(tracking_link)}}>
+              <img className="copy" src={copy} alt="Copy"/>
+            </button>
+            <a className="download" href={download_url}>
+              <img className="download" src={download} alt="Download"/>
+            </a>
+          </div>
         </div>
       </li>
     );

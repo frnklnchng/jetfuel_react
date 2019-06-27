@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../logo.svg';
 import Campaign from './campaign';
 
 class CampaignFeed extends React.Component {
@@ -19,12 +20,10 @@ class CampaignFeed extends React.Component {
   render() {
     const {campaigns} = this.state;
 
-    if (!campaigns) {
+    if (!campaigns.length) {
       // return loader;
       return (
-        <>
-          Loading...
-        </>
+        <img src={logo} className="App-logo" alt="logo" />
       );
     }
 
@@ -36,6 +35,7 @@ class CampaignFeed extends React.Component {
 
     return (
       <ul className="campaign-feed">
+        <div className="nav-placeholder"></div>
         {campaignItems}
       </ul>
     );

@@ -7,7 +7,7 @@ class Campaign extends React.Component {
     const {campaign_icon_url, campaign_name, pay_per_install, medias} = this.props.campaign;
 
     return(
-      <li>
+      <li className="campaign">
         <CampaignHeader
           icon={campaign_icon_url}
           name={campaign_name}

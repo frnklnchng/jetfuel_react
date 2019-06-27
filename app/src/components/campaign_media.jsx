@@ -10,8 +10,9 @@ class CampaignMedia extends React.Component {
     });
 
     return (
-      <ul>
+      <ul className="campaign-media">
         {mediaItems}
+        <div className="media-placeholder"></div>
       </ul>
     );
   }
