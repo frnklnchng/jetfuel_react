@@ -11,7 +11,7 @@ class CampaignMedia extends React.Component {
 
     return (
       <ul>
-        
+        {mediaItems}
       </ul>
     );
   }
