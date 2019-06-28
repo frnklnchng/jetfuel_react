@@ -1,5 +1,16 @@
 # JetFuel Take Home Exercise
 
+This was a fun project to work on. I attempted to create the UI from the Sketch. All core functionality works and runs fluidly. I also attempted all the bonus features to the best of my ability.
+
+- Failed API requests handled through error page and retry button
+- Videos play inline with the other media
+- Cover photos are sent through compression first to optimize load time
+- Pull to refresh works! If on a computer, just click and drag
+
+All testing was done in Chrome Dev Tools through the mobile view (iPhone X).
+
+---
+
 This is a frontend exercise that will give you the chance to see what kind of things we build at JetFuel!
 
 You will be building a simplified version of our main app, the Plug (www.plugco.in). This is the app through which our influencer access our offers, track their earnings, and manage their account. In particular, you will be recreating our main 'offer' feed:
