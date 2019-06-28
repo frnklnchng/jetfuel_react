@@ -8,6 +8,10 @@ class CampaignMediaItem extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      playing: false
+    };
+    
     this.copyToClipboard = this.copyToClipboard.bind(this);
   }
 
@@ -40,20 +44,36 @@ class CampaignMediaItem extends React.Component {
     const {cover_photo_url, media_type, tracking_link, download_url} = this.props.media;
     const resize = "https://res.cloudinary.com/zzyzx/image/fetch/w_100,h_200,c_fill,g_face,r_10,f_auto/";
 
-    const coverMedia = () => {
+    const coverMediaType = () => {
       if (media_type === "video") {
         return (
-          <img className="cover-play" src={play} alt="Play"></img>
+          <>
+            <img className="cover-play" src={play} alt="Play" onClick={() => {this.setState({playing: true})}}></img>
+            <div className="cover-overlay"></div>
+            <img className="media-item-cover" src={resize + escape(cover_photo_url)} alt="failed to load"></img>
+          </>
         );
       }
+
+      return <img className="media-item-cover" src={resize + escape(cover_photo_url)} alt="failed to load"></img>;
+    };
+
+    const constructMedia = () => {
+      if (!this.state.playing) {
+        return coverMediaType();
+      }
+
+      return (
+        <>
+          <video className="video-item" src={download_url} height="200px" width="100px" controls autoPlay></video>
+        </>
+      );
     };
 
     return (
       <li className="campaign-media-item">
         <div className="cover-container">
-          {coverMedia()}
-          <div className="cover-overlay"></div>
-          <img className="media-item-cover" src={resize + escape(cover_photo_url)} alt="failed to load"></img>
+          {constructMedia()}
         </div>
         <div className="media-item-options">
           <button className="copy" onClick={() => {this.copyToClipboard(tracking_link)}}>

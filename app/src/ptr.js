@@ -1,5 +1,3 @@
-'use strict';
-
 var _shared = {
   pullStartY: null,
   pullMoveY: null,
@@ -19,6 +17,7 @@ try {
     get passive() {
       // eslint-disable-line getter-return
       _shared.supportsPassive = true;
+      return true;
     }
 
   });
@@ -32,7 +31,7 @@ function setupDOM(handler) {
     if (handler.mainElement !== document.body) {
       handler.mainElement.parentNode.insertBefore(ptr, handler.mainElement);
     } else {
-      document.body.insertBefore(ptr, document.body.firstChild);
+      document.body.insertBefore(ptr, document.body.children[2]);
     }
 
     ptr.classList.add(((handler.classPrefix) + "ptr"));
@@ -173,7 +172,7 @@ var _setupEvents = (function () {
     _shared.distExtra = _shared.dist - _el.distIgnore;
 
     if (_shared.distExtra > 0) {
-      e.preventDefault();
+      // e.preventDefault();
       _el.ptrElement.style[_el.cssProp] = (_shared.distResisted) + "px";
       _shared.distResisted = _el.resistanceFunction(_shared.distExtra / _el.distThreshold) * Math.min(_el.distMax, _shared.distExtra);
 
@@ -285,8 +284,8 @@ var _ptrMarkup = "\n<div class=\"__PREFIX__box\">\n  <div class=\"__PREFIX__cont
 var _ptrStyles = "\n.__PREFIX__ptr {\n  box-shadow: inset 0 -3px 5px rgba(0, 0, 0, 0.12);\n  pointer-events: none;\n  font-size: 0.85em;\n  font-weight: bold;\n  top: 0;\n  height: 0;\n  transition: height 0.3s, min-height 0.3s;\n  text-align: center;\n  width: 100%;\n  overflow: hidden;\n  display: flex;\n  align-items: flex-end;\n  align-content: stretch;\n}\n\n.__PREFIX__box {\n  padding: 10px;\n  flex-basis: 100%;\n}\n\n.__PREFIX__pull {\n  transition: none;\n}\n\n.__PREFIX__text {\n  margin-top: .33em;\n  color: rgba(0, 0, 0, 0.3);\n}\n\n.__PREFIX__icon {\n  color: rgba(0, 0, 0, 0.3);\n  transition: transform .3s;\n}\n\n/*\nWhen at the top of the page, disable vertical overscroll so passive touch\nlisteners can take over.\n*/\n.__PREFIX__top {\n  touch-action: pan-x pan-down pinch-zoom;\n}\n\n.__PREFIX__release {\n  .__PREFIX__icon {\n    transform: rotate(180deg);\n  }\n}\n";
 
 var _defaults = {
-  distThreshold: 60,
-  distMax: 80,
+  distThreshold: 55,
+  distMax: 60,
   distReload: 50,
   distIgnore: 0,
   mainElement: 'body',
@@ -303,7 +302,7 @@ var _defaults = {
   getMarkup: function () { return _ptrMarkup; },
   getStyles: function () { return _ptrStyles; },
   onInit: function () {},
-  onRefresh: function () { return location.reload(); },
+  onRefresh: function () { return window.location.reload(); },
   resistanceFunction: function (t) { return Math.min(1, t / 2.5); },
 
   shouldPullToRefresh: function shouldPullToRefresh() {

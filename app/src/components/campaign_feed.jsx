@@ -24,14 +24,14 @@ class CampaignFeed extends React.Component {
   }
 
   componentDidMount() {
-    const that = this;
-    
+    const onRefresh = () => {
+      this.setState({ campaigns: [] });
+      this.fetchCampaigns();
+    };
+
     PullToRefresh.init({
       mainElement: 'body',
-      onRefresh() {
-        that.setState({ campaigns: [] });
-        that.fetchCampaigns();
-      }
+      onRefresh: onRefresh.bind(this)
     });
 
     this.fetchCampaigns();
@@ -71,7 +71,6 @@ class CampaignFeed extends React.Component {
 
     return (
       <ul className="campaign-feed">
-        <div className="nav-placeholder"></div>
         {campaignItems}
       </ul>
     );
