@@ -1,4 +1,4 @@
-# JetFuel Take Home Exercise
+# JetFuel Take Home React Exercise
 
 This was a fun project to work on. I attempted to create the UI from the Sketch. All core functionality works and runs fluidly. I also attempted all the bonus features to the best of my ability.
 
